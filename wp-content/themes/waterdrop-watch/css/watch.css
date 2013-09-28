@@ -33,10 +33,11 @@
 	transition: border linear .2s, box-shadow linear .2s;
 }
 
-#video-main, #comments {
+#video-main {
 	margin: 5px 0px 15px 10px;
 	width:700px;
-	float:left;
+    display: inline-block;
+    vertical-align: top;
 }
 
 #video-main #video-description #video-date{
@@ -57,9 +58,10 @@
 	padding:0px 0px 5px 0px;
 }
 #related-videos{
-margin: 20px 0px 0px 740px;
+margin: 40px 0px 0px 30px;
 width: 300px;
-
+display: inline-block;
+vertical-align: top;
 }
 
 #related-videos #thumbnails{
@@ -70,6 +72,13 @@ border-bottom:10px solid #ffffff;
 padding: 3px 3px 2px 3px;
 }
 
+#related-videos #thumbnails #thumbnail div 
+{
+/*display: inline-block;*/
+/*vertical-align: top; here */
+}
+
+
 #related-videos #thumbnails #thumbnail a{
 color: #036;
 text-decoration: none;
@@ -79,8 +88,6 @@ max-height: 2.4em;
 margin-bottom: 2px;
 overflow: hidden;
 cursor: pointer;
-display: inline-block;
-vertical-align: bottom; /* here */
 }
 
 #video-listing{

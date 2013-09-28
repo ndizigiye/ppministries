@@ -57,12 +57,23 @@ $videoDescription = $youtube->getDescription($videoID);
 $videoDate = $youtube->getDate($id);
 $videoTags = $youtube->getTags($id);
 $videoTags = $videoTags[0];
+$URI=$_SERVER['REQUEST_URI'];
 
 $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".$videoTags[0]."%' OR Tags LIKE '%".$videoTags[1]."%'");
 
 
 ?>
 <body>
+<!--FACEBOOK SDK-->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<!--END FACEBOOK SDK-->
     <div id="wrapper">
         <div id="header">
             <div id="logo">
@@ -77,12 +88,12 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
             <?php wp_nav_menu(array('theme_location' => 'main_nav', 'container' => '')); ?>
         </div>
         <div id="two-column">
-            <div id="search-box">
+            <!-- <div id="search-box">
                 <input type="text" class="search" /> <a
                     href="http://ppministries/design/watch.html" class="link-style">Search</a>
                 <a href="http://ppministries/design/browse-video.html"
                     id="browse-button" class="link-style">Browse</a>
-            </div>
+            </div> -->
             <div id="video-main">
                 <h2>
                     <?php echo $videoTitle?>
@@ -90,20 +101,22 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
                 <iframe width="700" height="400"
                     src="//www.youtube.com/embed/<?php echo $videoID?>?rel=0&autoplay=1" rel="0"
                     frameborder="0"  allowfullscreen></iframe>
-                    testestetsetsetset<br>teaetaetsetasetasetset
                 <div id="video-description">
                     <p id="video-date"><?php echo date('D', $videoDate).', '.$videoDate;?></p>
                     <p id="video-summary">
                         <?php echo $videoDescription ?>
                     </p>
-                    <p id="tags">
+                   <!--  <p id="tags">
                         <img src="images/tag.png" width="14px" height="14px" /> <b>Tags</b>:
                         <?php 
                         foreach($videoTags as $tag){
-                            echo '<a href="?s="'.$tag.'">'.$tag.'</href>';
+                            //echo '<a href="?s="'.$tag.'">'.$tag.'</href>';
                         }
                         ?>
-                    </p>
+                    </p> -->
+                </div>
+                <div id="comments">
+                <div class="fb-comments" data-href="'.<?php echo get_site_url().$URI; ?>.'" data-width="700"></div>
                 </div>
             </div>
             <div id="related-videos">
@@ -117,8 +130,8 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
                     $thisVideoThumbnail = $youtube->getThumbnail($thisVideoId);
                     
                     echo '<div id="thumbnail">'.
-                    '<img src="'.$thisVideoThumbnail.'" width="120"
-                            height="90" alt="" /> <a href="'."/?page_id=8&id=".$video->ID.'">'.$thisVideoTitle.'</a>'.
+                         '<div><a href="'."/?page_id=8&id=".$video->ID.'"><img src="'.$thisVideoThumbnail.'" width="120"
+                            height="90" alt="" /></a></div><div> <a href="'."/?page_id=8&id=".$video->ID.'">'.$thisVideoTitle.'</a></div>'.
                     "</div>";
                 }
                 ?>
@@ -128,7 +141,7 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
     </div>
     <div id="footer">
         <p>
-            Copyright (c) 2013 ppministries.nl All rights reserved. Design by <a
+            Copyright (c) 2013 ppministries.org All rights reserved. Design by <a
                 href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>
         </p>
     </div>

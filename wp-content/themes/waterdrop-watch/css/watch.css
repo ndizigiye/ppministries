@@ -58,23 +58,29 @@
 }
 #related-videos{
 margin: 20px 0px 0px 740px;
-width: 240px;
+width: 300px;
 
 }
 
 #related-videos #thumbnails{
 		margin-top:5px;
-		width: 166px;
 	}
 #related-videos #thumbnails #thumbnail{
-background-color:#000000;
 border-bottom:10px solid #ffffff;
 padding: 3px 3px 2px 3px;
 }
 
 #related-videos #thumbnails #thumbnail a{
-color: #ffffff;
-font-weight: 700;
+color: #036;
+text-decoration: none;
+font-size: 13px;
+font-weight: bold;
+max-height: 2.4em;
+margin-bottom: 2px;
+overflow: hidden;
+cursor: pointer;
+display: inline-block;
+vertical-align: bottom; /* here */
 }
 
 #video-listing{

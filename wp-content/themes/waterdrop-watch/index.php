@@ -63,20 +63,6 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
 
 ?>
 <body>
-    <!-- FACEBOOK LIKE -->
-    <div id="fb-root"></div>
-    <script>
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id))
-                return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <!-- FACEBOOK LIKE -->
     <div id="wrapper">
         <div id="header">
             <div id="logo">
@@ -104,6 +90,7 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
                 <iframe width="700" height="400"
                     src="//www.youtube.com/embed/<?php echo $videoID?>?rel=0&autoplay=1" rel="0"
                     frameborder="0"  allowfullscreen></iframe>
+                    testestetsetsetset<br>teaetaetsetasetasetset
                 <div id="video-description">
                     <p id="video-date"><?php echo date('D', $videoDate).', '.$videoDate;?></p>
                     <p id="video-summary">
@@ -119,9 +106,6 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
                     </p>
                 </div>
             </div>
-            <div id="comments">
-                <fb:comments href="http://wordpress" width="700" num_posts="10"></fb:comments>
-            </div>
             <div id="related-videos">
                 <h2>related videos</h2>
                 <div id="thumbnails">
@@ -134,8 +118,7 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
                     
                     echo '<div id="thumbnail">'.
                     '<img src="'.$thisVideoThumbnail.'" width="120"
-                            height="90" alt="" /> <a href="'."/?page_id=8&id=".$video->ID.'">'.$thisVideoTitle.'</a> <small>from
-                            ppministries</small>'.
+                            height="90" alt="" /> <a href="'."/?page_id=8&id=".$video->ID.'">'.$thisVideoTitle.'</a>'.
                     "</div>";
                 }
                 ?>

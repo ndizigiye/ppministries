@@ -102,7 +102,7 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
                     <?php echo $videoTitle?>
                 </h2>
                 <iframe width="700" height="400"
-                    src="//www.youtube.com/embed/<?php echo $videoID?>?autoplay=1" rel="0"
+                    src="//www.youtube.com/embed/<?php echo $videoID?>?rel=0&autoplay=1" rel="0"
                     frameborder="0"  allowfullscreen></iframe>
                 <div id="video-description">
                     <p id="video-date"><?php echo date('D', $videoDate).', '.$videoDate;?></p>

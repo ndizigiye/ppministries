@@ -98,7 +98,7 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
                 <h2>
                     <?php echo $videoTitle?>
                 </h2>
-                <iframe width="700" height="400"
+                <iframe width="640" height="400"
                     src="//www.youtube.com/embed/<?php echo $videoID?>?rel=0&autoplay=1" rel="0"
                     frameborder="0"  allowfullscreen></iframe>
                 <div id="video-description">
@@ -106,14 +106,14 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
                     <p id="video-summary">
                         <?php echo $videoDescription ?>
                     </p>
-                   <!--  <p id="tags">
+                   <p id="tags">
                         <img src="images/tag.png" width="14px" height="14px" /> <b>Tags</b>:
                         <?php 
                         foreach($videoTags as $tag){
-                            //echo '<a href="?s="'.$tag.'">'.$tag.'</href>';
+                            echo '<a href="?s='.$tag.'">'.$tag.'</a>';
                         }
                         ?>
-                    </p> -->
+                    </p>
                 </div>
                 <div id="comments">
                 <div class="fb-comments" data-href="'.<?php echo get_site_url().$URI; ?>.'" data-width="700"></div>
@@ -130,8 +130,8 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
                     $thisVideoThumbnail = $youtube->getThumbnail($thisVideoId);
                     
                     echo '<div id="thumbnail">'.
-                         '<div><a href="'."/?page_id=8&id=".$video->ID.'"><img src="'.$thisVideoThumbnail.'" width="120"
-                            height="90" alt="" /></a></div><div> <a href="'."/?page_id=8&id=".$video->ID.'">'.$thisVideoTitle.'</a></div>'.
+                         '<div class="thumbnail_image"><a href="'."/?page_id=8&id=".$video->ID.'"><img src="'.$thisVideoThumbnail.'" width="120"
+                            height="90" alt="" /></a></div><div class="thumbnail_title"> <a href="'."/?page_id=8&id=".$video->ID.'">'.$thisVideoTitle.'</a></div>'.
                     "</div>";
                 }
                 ?>

@@ -35,7 +35,7 @@
 
 #video-main {
 	margin: 5px 0px 15px 10px;
-	width:700px;
+	width:640px;
     display: inline-block;
     vertical-align: top;
 }
@@ -59,7 +59,7 @@
 }
 #related-videos{
 margin: 40px 0px 0px 30px;
-width: 300px;
+width: 350px;
 display: inline-block;
 vertical-align: top;
 }
@@ -72,14 +72,27 @@ border-bottom:10px solid #ffffff;
 padding: 3px 3px 2px 3px;
 }
 
-#related-videos #thumbnails #thumbnail div 
+#related-videos #thumbnails #thumbnail .thumbnail_image
 {
-/*display: inline-block;*/
-/*vertical-align: top; here */
+    width: 120px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+#related-videos #thumbnails #thumbnail .thumbnail_title
+{
+    margin: 0px 0px 0px 5px;
+    width: 210px;
+    display: inline-block;
+    vertical-align: top;
+    max-height: 2.5em;
+    overflow: hidden;   
 }
 
 
-#related-videos #thumbnails #thumbnail a{
+#related-videos #thumbnails #thumbnail div a
+{
+
 color: #036;
 text-decoration: none;
 font-size: 13px;

@@ -59,7 +59,15 @@ $videoTags = $youtube->getTags($id);
 $videoTags = $videoTags[0];
 $URI=$_SERVER['REQUEST_URI'];
 
-$relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".$videoTags[0]."%' OR Tags LIKE '%".$videoTags[1]."%'");
+if($videoTags[1]){
+    $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE (Tags LIKE '%".$videoTags[0]."%' OR Tags LIKE '%".$videoTags[1]."%') AND NOT ID ='".$id."' LIMIT 0, 10");
+}
+
+else{
+    $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".$videoTags[0]."%' AND NOT ID ='".$id."' LIMIT 0, 10");
+}
+//echo var_dump($videoTags);
+//echo var_dump($relatedVideos);
 
 
 ?>
@@ -116,7 +124,7 @@ $relatedVideos= $wpdb->get_results("SELECT * FROM wp_videos WHERE Tags LIKE '%".
                     </p>
                 </div>
                 <div id="comments">
-                <div class="fb-comments" data-href="'.<?php echo get_site_url().$URI; ?>.'" data-width="700"></div>
+                <div class="fb-comments" data-href="'.<?php echo get_site_url().$URI; ?>.'" data-width="640"></div>
                 </div>
             </div>
             <div id="related-videos">

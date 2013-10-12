@@ -14,6 +14,23 @@
 		}(document, 'script', 'facebook-jssdk'));
 	</script>
 	<!-- FACEBOOK LIKE -->
+    <!--Video Setup-->
+    <?php
+    require_once( ABSPATH . 'wp-content/plugins/ppministries/video.php' );
+    require_once( ABSPATH . 'wp-content/plugins/ppministries/youtube.php' );
+    
+    $video = new Video();
+    $latestVideo = $video->getLastAddedVideo();
+    $latestVideoId = $latestVideo->ID;
+    $url = $latestVideo->URL;
+    //die( var_dump($latestVideo));
+    $youtube = new Youtube();
+    $videoID = $youtube->getYoutubeID($url);
+    $VideoTitle = $youtube->getTitle($videoID);
+    $VideoThumbnail = $youtube->getThumbnail($videoID);
+    ?>
+    
+    <!--Video Setup-->
 	<div id="wrapper">
 		<div id="header">
 			<div id="logo">
@@ -35,12 +52,12 @@
 						<img src="<?php bloginfo('template_url') ?>/images/watch.png"
 							width="30" height="30" alt="" /> Watch
 					</h2>
-					<img src="<?php bloginfo('template_url') ?>/images/earth_10.jpg"
-						width="280" height="192" alt="" /> <a href=""><img class="play"
+					<img src="<?php echo $VideoThumbnail?>"
+						width="280" height="192" alt="" /> <a href="/?page_id=7&id=<?php echo $latestVideoId ?>"><img class="play"
 						src="<?php bloginfo('template_url') ?>/images/play-watch.png" /> </a>
 					<div class="column-text">
 						<p class="column-text-title">
-							<a href="#">Videos coming soon</a>
+							<a href="/?page_id=7&id=<?php echo $latestVideoId ?>"><?php echo $VideoTitle ?></a>
 						</p>
 					</div>
 				</div>

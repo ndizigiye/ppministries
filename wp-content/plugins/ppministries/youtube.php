@@ -4,7 +4,7 @@ class Youtube{
 
 
 	function getYoutubeID($url){
-
+                $match = null;
 		preg_match("#(?<=v=)[a-zA-Z0-9-]+(?=&)|(?<=v\/)[^&\n]+(?=\?)|(?<=v=)[^&\n]+|(?<=youtu.be/)[^&\n]+#", $url, $match);
 		return $match[0];
 	}

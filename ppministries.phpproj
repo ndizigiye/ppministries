@@ -860,6 +860,9 @@
     <Compile Include="wp-content\plugins\ppministries\ppministries.php">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="wp-content\plugins\ppministries\video.php">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="wp-content\plugins\ppministries\videoTable.php">
       <SubType>Code</SubType>
     </Compile>

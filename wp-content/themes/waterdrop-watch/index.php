@@ -39,6 +39,7 @@ Released   : 20130505
 <?php
 //videos setup
 require_once( ABSPATH . 'wp-content/plugins/ppministries/youtube.php' );
+require_once( ABSPATH . 'wp-content/plugins/ppministries/video.php' );
 
 global $wpdb;
 $id = $_REQUEST['id'];
@@ -46,7 +47,6 @@ $id = $_REQUEST['id'];
 if (!isset($id)){
     $data = $wpdb->get_results('SELECT ID FROM wp_videos ORDER BY ID DESC LIMIT 0, 1');
     echo '<script> window.location = "'.'/?page_id=8&id='.$data[0]->ID.'"</script>';
-    var_dump($data);
 }
 $data= $wpdb->get_results('SELECT URL FROM wp_videos WHERE ID='.$id);
 $url = $data[0]->URL;

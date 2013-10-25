@@ -17,6 +17,7 @@ function my_menu_pages(){
 	add_menu_page('My Page Title', 'PP ministries', 'manage_options', 'ppministries-menu', 'my_menu_output','',3);
 	add_submenu_page('ppministries-menu', 'Submenu Page Title', 'Videos', 'manage_options', 'ppministries-videos','videos_menu' );
 	add_submenu_page('ppministries-menu', 'Submenu Page Title2', 'Events', 'manage_options', 'ppministries-event','event_menu' );
+        add_submenu_page('ppministries-menu', 'Test', 'Test', 'manage_options', 'test_menu','test_menu' );
 }
 
 function wp_gear_manager_admin_scripts() {
@@ -190,6 +191,11 @@ function event_menu(){
 		$eventTable->prepare_items();
 		$eventTable->display();
 	}
+}
+
+function test_menu(){
+    require_once 'Mail.php';
+    var_dump(MailToAllUser());
 }
 //table of events
 ?>

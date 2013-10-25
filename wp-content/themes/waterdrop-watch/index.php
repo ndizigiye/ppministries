@@ -10,7 +10,7 @@ Version    : 1.0
 Released   : 20130505
  
 -->
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>PPministries</title>
@@ -74,13 +74,6 @@ else{
 <body>
 <!--FACEBOOK SDK-->
 <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <!--END FACEBOOK SDK-->
     <div id="wrapper">
         <div id="header">
@@ -124,7 +117,7 @@ else{
                     </p>
                 </div>
                 <div id="comments">
-                <div class="fb-comments" data-href="'.<?php echo get_site_url().$URI; ?>.'" data-width="640"></div>
+                    <fb:comments href="<?php echo get_site_url().$URI; ?>" colorscheme="white" numposts="50" width="640"></fb:comments>
                 </div>
             </div>
             <div id="related-videos">

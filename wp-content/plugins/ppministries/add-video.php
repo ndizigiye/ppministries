@@ -17,6 +17,9 @@ class AddVideo{
 <th scope="row"><label for="tags">Tags (separated with commas)</label></th>
 <td><input name="tags" type="text" id="tags" value="" class="regular-text"></td>
 </tr>
+<tr valign="top">
+<td><input type="checkbox" name="mail" id="mail" value="true"> Mail to All users<br></td>
+</tr>
 
 </tbody></table>
 <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p></form>

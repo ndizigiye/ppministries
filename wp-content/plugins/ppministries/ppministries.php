@@ -7,7 +7,7 @@
  Plugin Name: PP ministries settings
 Description: PP ministries settings
 Author: Armand Ndizigiye
-Version: 1.0
+Version: 0.1
 Author URI: http://ppministries.org
 */
 // Add to admin_menu function
@@ -32,8 +32,7 @@ add_action('admin_print_scripts', 'wp_gear_manager_admin_scripts');
 add_action('admin_print_styles', 'wp_gear_manager_admin_styles');
 
 function my_menu_output(){
-	echo "
-			<script>
+	echo "<script>
 			var file_frame;
  
 //mca_tray_button is the ID of my button that opens the Media window
@@ -83,26 +82,34 @@ function videos_menu(){
 	
 	require_once( 'add-video.php' );
 	require_once( 'videoTable.php' );
+        require_once( 'youtube.php' );
 
 	$addvideo = new AddVideo();
+        $youtube = new Youtube();
 
 	if ($_REQUEST['action'] === 'save'){
 		$id = $_POST["id"];
 		$url = $_POST["url"];
 		$tags = $_POST["tags"];
 		$date = date('Y-m-d');
+                $mailToUsers = $_POST["mail"];
+                $youtubeVideoId = $youtube->getYoutubeID($url);
+                $videoThumbnail = $youtube->getThumbnail($youtubeVideoId);
+                $videoTitle = $youtube->getTitle($youtubeVideoId);
 		global $wpdb;
 		if(isset($id)){
-			$query = "UPDATE wp_videos SET URL ='$url', Tags = '$tags', DATE = '$date' WHERE ID =".$id;
+			$query = "UPDATE wp_videos SET URL ='$url' Title = '$videoTitle'Tags = '$tags', DATE = '$date' WHERE ID =".$id;
 		}
 		else{
-			$query = "INSERT INTO wp_videos (URL, Tags, Date) VALUES ('$url','$tags','$date')";
+			$query = "INSERT INTO wp_videos (URL, Title, Tags, Date) VALUES ('$url','$videoTitle','$tags','$date')";
+                        if($mailToUsers == true){
+                             require_once 'Mail.php';
+                             $mailContent = CreateBody($videoTitle, $videoThumbnail, "http://ppministries/?page_id=7");
+                             var_dump(MailToAllUser($mailContent));
+                        }
 		}
 		$wpdb->query($query);
-		echo "<h2>Videos"."   ".sprintf('<a href="?page=%s&action=%s">Add video</a>',$_REQUEST['page'],'new-video').'</h2>';
-		$videoTable = new Video_Table();
-		$videoTable->prepare_items();
-		$videoTable->display();
+                echo "<script>window.location.href ='".admin_url()."admin.php?page=ppministries-videos"."';</script>";
 	}
 
 	if($_REQUEST['action'] === 'edit'){
@@ -116,10 +123,7 @@ function videos_menu(){
 	if($_REQUEST['action'] === 'delete'){
 		$id = intval($_REQUEST['movie']);
 		$edit_form = $addvideo->delete($id);
-		echo "<h2>Videos"."   ".sprintf('<a href="?page=%s&action=%s">Add video</a>',$_REQUEST['page'],'new-video').'</h2>';
-		$videoTable = new Video_Table();
-		$videoTable->prepare_items();
-		$videoTable->display();
+                echo "<script>window.location.href ='".admin_url()."admin.php?page=ppministries-videos"."';</script>";
 
 	}
 
@@ -192,10 +196,4 @@ function event_menu(){
 		$eventTable->display();
 	}
 }
-
-function test_menu(){
-    require_once 'Mail.php';
-    var_dump(MailToAllUser());
-}
-//table of events
 ?>

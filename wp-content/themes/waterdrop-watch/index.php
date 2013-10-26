@@ -46,7 +46,7 @@ $id = $_REQUEST['id'];
 
 if (!isset($id)){
     $data = $wpdb->get_results('SELECT ID FROM wp_videos ORDER BY ID DESC LIMIT 0, 1');
-    echo '<script> window.location = "'.'/?page_id=8&id='.$data[0]->ID.'"</script>';
+    echo '<script> window.location = "'.'/?page_id=7&id='.$data[0]->ID.'"</script>';
 }
 $data= $wpdb->get_results('SELECT URL FROM wp_videos WHERE ID='.$id);
 $url = $data[0]->URL;
@@ -131,8 +131,8 @@ else{
                     $thisVideoThumbnail = $youtube->getThumbnail($thisVideoId);
                     
                     echo '<div id="thumbnail">'.
-                         '<div class="thumbnail_image"><a href="'."/?page_id=8&id=".$video->ID.'"><img src="'.$thisVideoThumbnail.'" width="120"
-                            height="90" alt="" /></a></div><div class="thumbnail_title"> <a href="'."/?page_id=8&id=".$video->ID.'">'.$thisVideoTitle.'</a></div>'.
+                         '<div class="thumbnail_image"><a href="'."/?page_id=7&id=".$video->ID.'"><img src="'.$thisVideoThumbnail.'" width="120"
+                            height="90" alt="" /></a></div><div class="thumbnail_title"> <a href="'."/?page_id=7&id=".$video->ID.'">'.$thisVideoTitle.'</a></div>'.
                     "</div>";
                 }
                 ?>

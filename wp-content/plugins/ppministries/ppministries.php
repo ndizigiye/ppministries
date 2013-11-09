@@ -220,6 +220,7 @@ function articles_menu(){
 			$query = "UPDATE wp_articles SET Title ='$title', Tags = '$tags', Date = '$date' , Image = '$image' , Author = '$author', Summary = '$summary', Text = '$text'  WHERE ID =".$id;
 		}
 		else{
+                        $date = date('Y-m-d');
 			$query = "INSERT INTO wp_articles (Title, Tags, Date,Image,Author,Summary,Text) VALUES ('$title','$tags','$date','$image','$author','$summary','$text')";
 		}
 		$wpdb->query($query);
@@ -228,19 +229,16 @@ function articles_menu(){
 
 	if($_REQUEST['action'] === 'edit'){
 		echo "<h2>Events"."   ".sprintf('<a href="?page=%s&action=%s">Add Event</a>',$_REQUEST['page'],'new-event').'</h2>';
-		$id = intval($_REQUEST['event']);
+		$id = intval($_REQUEST['article']);
 		$edit_form = $addArticle->edit_form($id);
 		echo $edit_form;
 			
 	}
 
 	if($_REQUEST['action'] === 'delete'){
-		$id = intval($_REQUEST['event']);
+		$id = intval($_REQUEST['article']);
 		$edit_form = $addArticle->delete($id);
-		echo "<h2>Events"."   ".sprintf('<a href="?page=%s&action=%s">Add Event</a>',$_REQUEST['page'],'new-event').'</h2>';
-		$eventTable = new Event_Table();
-		$eventTable->prepare_items();
-		$eventTable->display();
+		echo "<script>window.location.href ='".admin_url()."admin.php?page=ppministries-articles"."';</script>";
 	}
 
 	if($_REQUEST['action'] === 'new-article'){
@@ -259,5 +257,54 @@ function articles_menu(){
 }
 
 function audios_menu(){
+      require_once( 'add-audio.php' );
+    require_once( 'audioTable.php' );
+    
+    $addAudio = new AddAudio();
+    
+    if ($_REQUEST['action'] === 'save'){
+		$id = $_POST["id"];
+		$source = $_POST["source"];
+		$tags = $_POST["tags"];
+		$date = $_POST["date"];
+		$image = $_POST["image"];
+		$author = $_POST["author"];
+                $summary = $_POST["summary"];
+		global $wpdb;
+		if(isset($id)){
+			$query = "UPDATE wp_audios SET Source ='$source', Tags = '$tags', Date = '$date' , Image = '$image' , Author = '$author', Summary = '$summary'  WHERE ID =".$id;
+		}
+		else{
+                        $date = date('Y-m-d');
+			$query = "INSERT INTO wp_audios (Source, Tags, Date,Image,Author,Summary) VALUES ('$source','$tags','$date','$image','$author','$summary')";
+		}
+		$wpdb->query($query);
+                echo "<script>window.location.href ='".admin_url()."admin.php?page=ppministries-audios"."';</script>";
+	}
+
+	if($_REQUEST['action'] === 'edit'){
+		echo "<h2>Change audio</h2>";
+		$id = intval($_REQUEST['audio']);
+		$edit_form = $addAudio->edit_form($id);
+		echo $edit_form;
+			
+	}
+
+	if($_REQUEST['action'] === 'delete'){
+		$id = intval($_REQUEST['audio']);
+		$edit_form = $addAudio->delete($id);
+		echo "<script>window.location.href ='".admin_url()."admin.php?page=ppministries-audios"."';</script>";
+	}
+
+	if($_REQUEST['action'] === 'new-audio'){
+		echo $addAudio->add_form();
+	}
+	
+	if(!isset($_REQUEST['action'])){
+		echo "<h2>Audios"."   ".sprintf('<a href="?page=%s&action=%s">New audio</a>',$_REQUEST['page'],'new-audio').'</h2>';
+		$audioTable = new Audio_Table();
+		$audioTable->prepare_items();
+		$audioTable->display();
+	}
 }
 ?>

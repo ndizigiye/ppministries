@@ -52,31 +52,57 @@ cols="50" rows="6" value="" class="regular-text">
 	
 	function edit_form($id){
 		global $wpdb;
-		$data = $wpdb->get_results('SELECT ID,Title,Tags,Image,Author,Summart,Text FROM wp_articles WHERE ID='.$id);
-		$form='
+		$data = $wpdb->get_results('SELECT * FROM wp_articles WHERE ID='.$id);
+		//die(var_dump($data));
+                $form='
 <div class="wrap">
-<div id="icon-options-general" class="icon32"><br></div><h2>Add new Articles</h2>
-	
-<form method="post" action="?page=ppministries-videos&action=save">
+<div id="icon-options-general" class="icon32"><br></div><h2>Edit article</h2>
+<form method="post" action="?page=ppministries-articles&action=save">
 <table class="form-table">
 <tbody>
 <tr valign="top">
 <td><input name="id" type="hidden" id="id" value="'.$data[0]->ID.'" class="regular-text"></td>
 </tr>
 <tr valign="top">
-<th scope="row"><label for="url">URL</label></th>
-<td><input name="url" type="text" id="url" value="'.$data[0]->URL.'" class="regular-text"></td>
+<th scope="row"><label for="title">Title</label></th>
+<td><input name="title" type="text" id="title" value="'.$data[0]->Title.'" class="regular-text"></td>
 </tr>
 <tr valign="top">
-<th scope="row"><label for="tags">Tags (separated with commas)</label></th>
+<th scope="row"><label for="tags">Tags</label></th>
 <td><input name="tags" type="text" id="tags" value="'.$data[0]->Tags.'" class="regular-text"></td>
 </tr>
-	
-</tbody></table>
+<tr valign="top">
+<th scope="row"><label for="title">Image</label></th>
+<td><input type="text" name="image" id="image" value="'.$data[0]->Image.'">
+<input type="button" name="choose button" id="selector" class="button button-primary" value="Select image">
+</td>
+</tr>
+<tr valign="top">
+<th scope="row"><label for="author">Author</label></th>
+<td><input name="author" type="text" id="author" value="'.$data[0]->Author.'" class="regular-text"></td>
+</tr>
+<tr valign="top">
+<th scope="row"><label for="summary">Summary</label></th>
+<td><textarea name="summary" type="text" id="summary" 
+cols="50" rows="6" class="regular-text">
+'.$data[0]->Summary.'
+</textarea>
+</td>
+</tr>
+<tr valign="top">
+<th scope="row"><label for="text">Main Text</label></th>
+<td><textarea name="text" type="text" id="text" 
+cols="50" rows="6" class="regular-text">
+'.$data[0]->Text.'
+</textarea>
+</td>
+</tr>
+</tbody></table>	
+<form method="post" action="?page=ppministries-articles&action=save">
+
 <p class="submit"><input type="submit" name="submit" id="submit" class="button button-primary" value="Save Changes"></p></form>
 	
-</div>
-		';
+</div>'.AddArtice::chooseImage();
 	
 	
 		return  $form;

@@ -5,7 +5,7 @@ if (!class_exists('WP_List_Table')) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
 
-class Article_Table extends WP_List_Table {
+class Audio_Table extends WP_List_Table {
 
     var $example_data = array(
     );
@@ -23,7 +23,7 @@ class Article_Table extends WP_List_Table {
 
     function column_default($item, $column_name) {
         switch ($column_name) {
-            case 'Title':
+            case 'Source':
             case 'Tags':
             case 'Date':
             case 'Image':
@@ -34,17 +34,17 @@ class Article_Table extends WP_List_Table {
         }
     }
 
-    function column_Title($item) {
+    function column_Source($item) {
 
         //Build row actions
         $actions = array(
-            'edit' => sprintf('<a href="?page=%s&action=%s&article=%s">Edit</a>', $_REQUEST['page'], 'edit', $item['ID']),
-            'delete' => sprintf('<a href="?page=%s&action=%s&article=%s">Delete</a>', $_REQUEST['page'], 'delete', $item['ID']),
+            'edit' => sprintf('<a href="?page=%s&action=%s&audio=%s">Edit</a>', $_REQUEST['page'], 'edit', $item['ID']),
+            'delete' => sprintf('<a href="?page=%s&action=%s&audio=%s">Delete</a>', $_REQUEST['page'], 'delete', $item['ID']),
         );
 
         //Return the title contents
         return sprintf('%1$s <span style="color:silver">(id:%2$s)</span>%3$s',
-                /* $1%s */ $item['Title'],
+                /* $1%s */ $item['Source'],
                 /* $2%s */ $item['ID'],
                 /* $3%s */ $this->row_actions($actions, false)
         );
@@ -61,7 +61,7 @@ class Article_Table extends WP_List_Table {
     function get_columns() {
         $columns = array(
             'cb' => '<input type="checkbox" />', //Render a checkbox instead of text
-            'Title' => 'Title',
+            'Source' => 'Source',
             'Tags' => 'Tags',
             'Date' => 'Date',
             'Image' => 'Image',
@@ -99,13 +99,13 @@ class Article_Table extends WP_List_Table {
 
     function prepare_items() {
         global $wpdb;
-        $records = $wpdb->get_results("SELECT * FROM wp_articles");
+        $records = $wpdb->get_results("SELECT * FROM wp_audios");
 
         if (!empty($records)) {
             foreach ($records as $rec) {
                 $array = array(
                     'ID' => $rec->ID,
-                    'Title' => $rec->Title,
+                    'Source' => $rec->Source,
                     'Tags' => $rec->Tags,
                     'Date' => $rec->Date,
                     'Image' => $rec->Image,
@@ -131,7 +131,7 @@ class Article_Table extends WP_List_Table {
         $data = $this->example_data;
 
         function usort_reorder($a, $b) {
-            $orderby = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'URL'; //If no sort, default to title
+            $orderby = (!empty($_REQUEST['orderby'])) ? $_REQUEST['orderby'] : 'Source'; //If no sort, default to title
             $order = (!empty($_REQUEST['order'])) ? $_REQUEST['order'] : 'asc'; //If no order, default to asc
             $result = strcmp($a[$orderby], $b[$orderby]); //Determine sort order
             return ($order === 'asc') ? $result : -$result; //Send final sort direction to usort

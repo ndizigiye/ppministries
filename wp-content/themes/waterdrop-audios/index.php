@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!--
+Design by Free CSS Templates
+http://www.freecsstemplates.org
+Released for free under a Creative Commons Attribution 2.5 License
+
+Name       : WaterDrop 
+Description: A two-column, fixed-width design with dark color scheme.
+Version    : 1.0
+Released   : 20130505
+
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://ogp.me/ns/fb#">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PPministries</title>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="mediaelement-and-player.min.js"></script>
+<script src="<?php bloginfo('template_url') ?>/js/default.js"></script>
+<link rel="stylesheet" href="mediaelementplayer.css" />s
+<link href="lib/menucool/themes/1/js-image-slider.css" rel="stylesheet" type="text/css" />
+<script src="lib/menucool/themes/1/js-image-slider.js" type="text/javascript"></script>
+<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700" rel="stylesheet" type="text/css" />
+<link href="<?php bloginfo('template_url') ?>/css/default.css" rel="stylesheet" type="text/css" media="all" />
+<link href="<?php bloginfo('template_url') ?>/css/listen.css" rel="stylesheet" type="text/css" media="all" />
+<!--[if IE 6]>
+<link href="default_ie6.css" rel="stylesheet" type="text/css" />
+<![endif]-->
+</head>
+<body>
+<div id="fb-root"></div>
+<!-- FACEBOOK COMMENT BOX -->
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
+<!-- FACEBOOK COMMENT BOX -->
+
+	<div id="wrapper">
+		<div id="header">
+			<div id="logo">
+				<h1>
+					<a href="#">Power of Prayer Ministries</a>
+				</h1>
+				<p></p>
+			</div>
+		</div>
+		<!-- end #header -->
+		<div id="menu">
+<?php wp_nav_menu(array('theme_location' => 'main_nav', 'container' => '')); ?>
+		</div>
+<div id="two-column">
+
+	   <div id="audio-main">
+			<h2>The Exalted Lord of the Revelation</h2>
+			<img src="images/golgotha.jpg" width="700" height="auto"/>
+			<audio src="http://s2.cpl.delvenetworks.com/media/781563d6695d48a496254cad9c2ea179/31afb4f64d894081a026f7f7ab1e6c9b/74f75d5e69044958a0b9df895b9e4b0b/itm_pgm_07_05_13_usa_7705.mp3" width="700px" height="100px" preload="false" controls loop></audio>
+				<div id="audio-description">
+					<p id="audio-date">Sunday, July 07, 2013</p>
+					<p id="audio-summary">
+					Is God first in your life, or is He an afterthought? 
+					Are there others who have greater influence over your conduct and conversation than He does? 
+					In this important message, Seeking the Lord, Dr. Stanley explains 
+					how the Father pursues us and how we can embrace an intimate 
+					relationship with Him.
+					</p>
+					<p id="tags">
+					<img src="images/tag.png" width="14px" height="14px"/> <b>Tags</b>: kirk franklin,worship
+					</p>
+				</div>
+		</div>
+		<div id="comments">
+		<fb:comments href="http://niarmand.com" width="700" num_posts="10"></fb:comments>
+		</div>
+		<div id="related-audios">
+			<h2>related audios</h2>
+			<div id="thumbnails">
+				<div id="thumbnail">
+					<img src="images/thumbnail_related_audios_1.jpg" width="160" height="94" alt="" />
+					<a href="#">Don moen - We praise you</a>
+					<small>from enseignemoi.com</small>
+				</div>
+				<div id="thumbnail">
+					<img src="images/thumbnail_related_audios_2.jpg" width="160" height="94" alt="" />
+					<a href="#">Don moen - We praise you</a>
+					<small>from enseignemoi.com</small>
+				</div>
+				<div id="thumbnail">
+					<img src="images/thumbnail_related_audios_3.jpg" width="160" height="94" alt="" />
+					<a href="#">Don moen - We praise you</a>
+					<small>from enseignemoi.com</small>
+				</div>
+				<div id="thumbnail">
+					<img src="images/thumbnail_related_audios_4.jpg" width="160" height="94" alt="" />
+					<a href="#">Don moen - We praise you</a>
+					<small>from enseignemoi.com</small>
+				</div>
+				<div id="thumbnail">
+					<img src="images/thumbnail_related_audios_5.jpg" width="160" height="94" alt="" />
+					<a href="#">Don moen - We praise you</a>
+					<small>from enseignemoi.com</small>
+				</div>
+				<div id="thumbnail">
+					<img src="images/thumbnail_related_audios_6.jpg" width="160" height="94" alt="" />
+					<a href="#">Don moen - We praise you</a>
+					<small>from enseignemoi.com</small>
+				</div>
+				<div id="thumbnail">
+					<img src="images/thumbnail_related_audios_7.jpg" width="160" height="94" alt="" />
+					<a href="#">Don moen - We praise you</a>
+					<small>from enseignemoi.com</small>
+				</div>
+				<div id="thumbnail">
+					<img src="images/thumbnail_related_audios_8.jpg" width="160" height="94" alt="" />
+					<a href="#">Don moen - We praise you</a>
+					<small>from enseignemoi.com</small>
+				</div>
+				<div id="thumbnail">
+					<img src="images/thumbnail_related_audios_9.jpg" width="160" height="94" alt="" />
+					<a href="#">Don moen - We praise you</a>
+					<small>from enseignemoi.com</small>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<div id="footer">
+		<p>
+			Copyright (c) 2013 ppministries.nl All rights reserved. Design by <a
+				href="http://www.freecsstemplates.org/" rel="nofollow">FreeCSSTemplates.org</a>
+		</p>
+	</div>
+</body>
+</html>

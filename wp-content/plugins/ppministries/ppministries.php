@@ -19,7 +19,6 @@ function my_menu_pages(){
         add_submenu_page('ppministries-menu', 'Submenu Page Title', 'Articles', 'manage_options', 'ppministries-articles','articles_menu');
         add_submenu_page('ppministries-menu', 'Submenu Page Title', 'Audios', 'manage_options', 'ppministries-audios','audios_menu');
 	add_submenu_page('ppministries-menu', 'Submenu Page Title2', 'Events', 'manage_options', 'ppministries-event','event_menu' );
-        add_submenu_page('ppministries-menu', 'Test', 'Test', 'manage_options', 'test_menu','test_menu' );
 }
 
 function wp_gear_manager_admin_scripts() {

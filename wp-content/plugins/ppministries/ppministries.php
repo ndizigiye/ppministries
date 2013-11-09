@@ -16,6 +16,8 @@ add_action('admin_menu', 'my_menu_pages');
 function my_menu_pages(){
 	add_menu_page('My Page Title', 'PP ministries', 'manage_options', 'ppministries-menu', 'my_menu_output','',3);
 	add_submenu_page('ppministries-menu', 'Submenu Page Title', 'Videos', 'manage_options', 'ppministries-videos','videos_menu' );
+        add_submenu_page('ppministries-menu', 'Submenu Page Title', 'Articles', 'manage_options', 'ppministries-articles','articles_menu');
+        add_submenu_page('ppministries-menu', 'Submenu Page Title', 'Audios', 'manage_options', 'ppministries-audios','audios_menu');
 	add_submenu_page('ppministries-menu', 'Submenu Page Title2', 'Events', 'manage_options', 'ppministries-event','event_menu' );
         add_submenu_page('ppministries-menu', 'Test', 'Test', 'manage_options', 'test_menu','test_menu' );
 }
@@ -195,5 +197,67 @@ function event_menu(){
 		$eventTable->prepare_items();
 		$eventTable->display();
 	}
+}
+
+function articles_menu(){
+    
+    require_once( 'add-article.php' );
+    require_once( 'articleTable.php' );
+    
+    $addArticle = new AddArtice();
+    
+    if ($_REQUEST['action'] === 'save'){
+		$id = $_POST["id"];
+		$title = $_POST["title"];
+		$tags = $_POST["tags"];
+		$date = $_POST["date"];
+		$image = $_POST["image"];
+		$author = $_POST["author"];
+                $summary = $_POST["summary"];
+                $text = $_POST["text"];
+		global $wpdb;
+		if(isset($id)){
+			$query = "UPDATE wp_articles SET Title ='$title', Tags = '$tags', Date = '$date' , Image = '$image' , Author = '$author', Summary = '$summary', Text = '$text'  WHERE ID =".$id;
+		}
+		else{
+			$query = "INSERT INTO wp_articles (Title, Tags, Date,Image,Author,Summary,Text) VALUES ('$title','$tags','$date','$image','$author','$summary','$text')";
+		}
+		$wpdb->query($query);
+                echo "<script>window.location.href ='".admin_url()."admin.php?page=ppministries-articles"."';</script>";
+	}
+
+	if($_REQUEST['action'] === 'edit'){
+		echo "<h2>Events"."   ".sprintf('<a href="?page=%s&action=%s">Add Event</a>',$_REQUEST['page'],'new-event').'</h2>';
+		$id = intval($_REQUEST['event']);
+		$edit_form = $addArticle->edit_form($id);
+		echo $edit_form;
+			
+	}
+
+	if($_REQUEST['action'] === 'delete'){
+		$id = intval($_REQUEST['event']);
+		$edit_form = $addArticle->delete($id);
+		echo "<h2>Events"."   ".sprintf('<a href="?page=%s&action=%s">Add Event</a>',$_REQUEST['page'],'new-event').'</h2>';
+		$eventTable = new Event_Table();
+		$eventTable->prepare_items();
+		$eventTable->display();
+	}
+
+	if($_REQUEST['action'] === 'new-article'){
+		echo $addArticle->add_form();
+	}
+	
+	if(!isset($_REQUEST['action'])){
+		echo "<h2>Articles"."   ".sprintf('<a href="?page=%s&action=%s">New article</a>',$_REQUEST['page'],'new-article').'</h2>';
+		$articleTable = new Article_Table();
+		$articleTable->prepare_items();
+		$articleTable->display();
+	}
+    
+    
+    
+}
+
+function audios_menu(){
 }
 ?>
